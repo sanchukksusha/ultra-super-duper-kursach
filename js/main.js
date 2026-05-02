@@ -144,3 +144,5 @@ window.addEventListener('keydown', (e) => {
         setTimeout(() => { if(isRunning) spans[currentIndex].style.backgroundColor = ''; }, 150);
     }
 });
+
+// lalalala
