@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Тренажер печати</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div id="main-menu" class="screen">
+        <h1>Тренажер слепой печати</h1>
+        <div class="menu-buttons">
+            <button id="mode-levels-btn">Уровни</button>
+            <button id="mode-custom-btn">Свой текст</button>
+            <button id="mode-real-btn">Реальный текст</button>
+        </div>
+    </div>
+
+    <div id="levels-screen" class="screen" style="display: none;">
+        <button class="back-btn">← Назад</button>
+        <h2>Выберите уровень</h2>
+        <div id="levels-container"></div> <!-- Сюда JS отрисует меню -->
+    </div>
+
+    <div id="custom-text-screen" class="screen" style="display: none;">
+        <button class="back-btn">← Назад</button>
+        <h2 id="level-title">Тренировка</h2>
+        
+        <textarea id="text-input" placeholder="Вставьте ваш текст здесь..."></textarea>
+        <button id="start-btn">Начать тренировку</button>
+
+        <div id="stats">
+            Время: <span id="timer">00:00</span> | Ошибки: <span id="errors">0</span>
+        </div>
+
+        <div id="display-area" class="display-box"></div>
+    </div>
+
+    <div id="real-text-screen" class="screen" style="display: none;">
+        <button class="back-btn">← Назад</button>
+        <h2>Реальный текст</h2>
+        <div style="text-align: center; margin-bottom: 20px;">
+            <button id="change-text-btn" class="secondary-btn">Изменить текст</button>
+        </div>
+        <div id="stats">
+            Время: <span id="timer-real">00:00</span> | Ошибки: <span id="errors-real">0</span>
+        </div>
+        <div id="display-area-real" class="display-box"></div>
+    </div>
+
+    <script src="js/settings.js"></script>
+    <script src="js/timer.js"></script>
+    <script src="js/engine.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>
