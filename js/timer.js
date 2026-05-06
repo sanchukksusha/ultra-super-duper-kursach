@@ -1,19 +1,18 @@
 function startTimer() {
-    if (startTime) return;
     startTime = Date.now();
-    timerInterval = setInterval(() => {
-        const seconds = Math.floor((Date.now() - startTime) / 1000);
-        
-        // Форматируем время в ММ:СС
-        const mins = Math.floor(seconds / 60).toString().padStart(2, '0');
-        const secs = (seconds % 60).toString().padStart(2, '0');
-        
-        timerDisplay.textContent = `${mins}:${secs}`;
-    }, 1000);
+    timerInterval = setInterval(updateTimer, 1000);
 }
 
-function resetTimer() {
-    clearInterval(timerInterval);
-    startTime = null;
-    timerDisplay.textContent = '00:00';
+function updateTimer() {
+    const elapsedSeconds = Math.floor((Date.now() - startTime) / 1000);
+    const minutes = Math.floor(elapsedSeconds / 60);
+    const seconds = elapsedSeconds % 60;
+    const timeString = `${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
+    
+    // Обновляем таймер в зависимости от активного режима
+    if (realTextScreen.style.display === 'block') {
+        timerReal.textContent = timeString;
+    } else {
+        timerDisplay.textContent = timeString;
+    }
 }
