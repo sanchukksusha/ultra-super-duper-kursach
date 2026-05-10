@@ -74,8 +74,16 @@ document.getElementById('mode-real-btn').onclick = () => {
 };
 
 changeTextBtn.onclick = () => {
-    const txt = realTextsDatabase[Math.floor(Math.random() * realTextsDatabase.length)];
-    startSpecificGame(txt, "Реальный текст", displayAreaReal);
+    let newText;
+    const currentText = displayAreaReal.textContent;
+
+    // Выбираем текст из базы так, чтобы он не был таким же, как сейчас
+    do {
+        newText = realTextsDatabase[Math.floor(Math.random() * realTextsDatabase.length)];
+    } while (newText === currentText && realTextsDatabase.length > 1);
+
+    // Сразу запускаем игру без лишних ожиданий сети
+    startSpecificGame(newText, "Реальный текст", displayAreaReal);
 };
 
 document.querySelectorAll('.back-btn').forEach(b => b.onclick = () => {
